@@ -13,6 +13,10 @@
   %li{ class: " #{'active' if (controller.controller_name == "snippets") }" }
     = link_to project_snippets_path(@project), class: "snippets-tab tab" do
       Snippets
+  - if @project.simplecov?
+    %li{ class: " #{'active' if (controller.controller_name == "simplecov") }" }
+      = link_to project_snippets_path(@project), class: "simplecov-tab tab" do
+        Simplecov
 
   - if can? current_user, :admin_project, @project
     %li.right{class: "#{'active' if controller.controller_name == "deploy_keys"}"}
